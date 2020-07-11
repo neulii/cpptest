@@ -23,7 +23,8 @@ int main()
 		text.setFont(font);
 		text.setString("hallo");
 		text.setFillColor(sf::Color::Red);
-		text.setCharacterSize(20);
+		text.setCharacterSize(40);
+		text.setStyle(sf::Text::Bold);
 
 	}
 
