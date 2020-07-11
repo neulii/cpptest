@@ -10,6 +10,22 @@ int getSum(int a, int b);
 int main()
 {
 	
+	sf::Text text;
+	sf::Font font;
+
+	if(!font.loadFromFile("../src/arial.ttf"))
+	{
+		std::cout << "fehler beim laden der schriftart" << std::endl;	
+
+	}
+	else
+	{
+		text.setFont(font);
+		text.setString("hallo");
+		text.setFillColor(sf::Color::Red);
+		text.setCharacterSize(20);
+
+	}
 
 	double d = 0;
 	double fps = 0;
@@ -25,9 +41,6 @@ int main()
 		sf::Time elapsed = clock.restart();
 	
 		fps = 1.f/elapsed.asMicroseconds()*1000000;
-
-//		std::cout << fps << std::endl;
-
 
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
@@ -51,7 +64,6 @@ int main()
 					window.close();
 			}
 			
-			sum(10,10);
 
 			if(event.type == sf::Event::MouseMoved)
 			{
@@ -59,11 +71,13 @@ int main()
 				sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
 				sf::Vector2f worldPos = window.mapPixelToCoords(pixelPos);
 				std::cout << worldPos.x << "  /  " << worldPos.y << std::endl;
-				std::cout << sum(10,10) << std::endl;
+				//std::cout << sum(10,10) << std::endl;
 			}
 		}
 
 		window.clear(sf::Color::Black);
+
+		window.draw(text);
 		window.draw(r);
 
 		window.display();
